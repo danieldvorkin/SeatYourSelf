@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
-  	@restaurant = load_rest
+  	@restaurant = load_restaurant
   	@reservation = Reservation.new(res_params)
 
   	if @reservation.save
@@ -26,10 +26,10 @@ class ReservationsController < ApplicationController
 
   private
   def res_params
-  	params.require(:reservation).permit(:user_id, :rest_id, :hours, :party_size)
+  	params.require(:reservation).permit(:name, :rest_id, :hours, :party_size)
   end
 
-  def load_rest
+  def load_restaurant
   	@restaurant = Restaurant.find(params[:rest_id])
   end
 end

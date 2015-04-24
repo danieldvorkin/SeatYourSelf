@@ -1,14 +1,10 @@
-<h1>Welcome to Seat->Your->Self</h1>
-<% if !current_user %>
-	<%= link_to 'Sign Up', "/users/new" %>
-	<%= link_to 'Log In', new_session_path %>
-<% else %>
-	<%= link_to 'Sign Out', session_path("current"), :method => :delete %>
-<% end %><hr />
+
 <div class="well">
 	<% @restaurants.each do |r| %>
 		<h2><%= r.name %></h2>
-		<p><%= link_to 'Reserve', "/restaurants/#{r.id}/reservations/new" %></p>
+		<p>Address: <%= r.address %></p>
+		<p>Capacity: <%= r.capacity %></p>
+		<div class="btn btn-default"><%= link_to 'Reserve', "/restaurants/#{r.id}/reservations/new" %></div>
 
 	<% end %>
 </div>
