@@ -1,0 +1,23 @@
+<div class="field">
+<%= form_for User.new do |u| %>
+	<div class="field">
+		<%= u.label :name %>
+		<%= u.text_field :name %>
+	</div>
+	<div class="field">
+		<%= u.label :email %>
+		<%= u.text_field :email %>
+	</div>
+	<div class="field">
+		<%= u.label :password %>
+		<%= u.password_field :password %>
+	</div>
+	<div class="field">
+		<%= u.label :password_confirmation %>
+		<%= u.password_field :password_confirmation %>
+	</div>
+	<div class="actions">
+		<%= u.submit %>
+	</div>
+<% end %>
+</div>

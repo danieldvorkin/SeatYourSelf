@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  hours: 2015-04-24 15:16:23
+  capacity: 1
+
+two:
+  name: MyString
+  address: MyString
+  hours: 2015-04-24 15:16:23
+  capacity: 1
