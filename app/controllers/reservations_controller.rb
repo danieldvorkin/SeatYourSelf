@@ -4,14 +4,15 @@ class ReservationsController < ApplicationController
   end
 
   def create
-  	@restaurant = load_restaurant
-  	@reservation = Reservation.new(res_params)
-
-  	if @reservation.save
-  		redirect_to root_path(@restaurant, @reservation)
-  	else
-  		render 'restaurants'
-  	end
+    @restaurant = load_restaurant
+    @reservation = @restaurant.reservations.build(res_params)
+    @reservation.user = current_user
+    if @reservation.save
+      @restaurant.save
+      redirect_to root_path, alert: "Reservation made!"
+    else
+      redirect_to "/restaurants/show"
+    end
   end
 
   def destroy
@@ -26,10 +27,10 @@ class ReservationsController < ApplicationController
 
   private
   def res_params
-  	params.require(:reservation).permit(:name, :rest_id, :hours, :party_size)
+  	params.require(:reservation).permit(:name, :booking_time, :booking_date, :party_size)
   end
 
   def load_restaurant
-  	@restaurant = Restaurant.find(params[:rest_id])
+  	@restaurant = Restaurant.find(params[:restaurant_id])
   end
 end

@@ -1,0 +1,94 @@
+
+<div class="container target fixed" style="color: black;">
+  <div class="row">
+    <div class="col-sm-12">
+      <div style="text-align:center;">
+        <h1><%= current_user.name %>'s Reservations</h1>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr />
+  <div class="row">
+    <div class="col-sm-3">
+      <!--left col-->
+      <ul class="list-group">
+        <li class="list-group-item text-muted" contenteditable="false">User Details</li>
+        <li class="list-group-item text-right">
+          <span class="pull-left">
+            <strong class="">Joined: </strong>
+          </span><%= current_user.created_at %>
+        </li>
+        <li class="list-group-item text-right">
+          <span class="pull-left">
+            <strong class="">Name: </strong>
+          </span><%= current_user.name %>
+        </li>
+        <li class="list-group-item text-right">
+          <span class="pull-left">
+            <strong class="">Email: </strong>
+          </span><%= current_user.email %>
+        </li>
+      </ul>
+      <ul class="list-group">
+        <li class="list-group-item text-muted">Activity 
+          <i class="fa fa-dashboard fa-1x"></i>
+        </li>
+        <li class="list-group-item text-right">
+          <span class="pull-left">
+            <strong class="">Total Reservations Made</strong>
+          </span><%= current_user.reservations.count %>
+        </li>
+      </ul>
+    </div>
+  <!--/col-3-->
+  <div class="col-sm-9" contenteditable="false" style="">
+    <div class="panel panel-default">
+      <div class="panel-heading" style="text-align:center;">
+        <%= current_user.name %>'s Most Recent Reservations
+      </div>
+      <div class="panel-body" style="text-align:center;">
+        <p>
+          <% current_user.reservations.order("created_at DESC").each do |reservation| %>
+            <p>
+              <% if reservation.user != nil %>
+                <% if reservation.restaurant != nil %>
+                  
+                  <!-- Name for the reservation -->
+                  <h2 style="color:blue;">Name under Reservation: 
+                    <span style="color: black;"><%= reservation.name %></span>
+                  </h2>
+                  
+                  <!-- Location of the reservation -->
+                  <h3 style="color:red;">Location: 
+                    <span style="color: black;"><%= reservation.restaurant.name %></span>
+                  </h3>
+
+                  <!-- Time and size of party -->
+                  <h4 style="color:purple;">Time: 
+                    <span style="color:black;">
+                      <%= reservation.booking_time %>
+                    </span>
+                  </h4>
+                  
+                  <!-- Time and size of party -->
+                  <h4 style="color:purple;">Date: 
+                    <span style="color:black;">
+                      <%= reservation.booking_date %>
+                    </span>
+                  </h4>
+                  <em>by <b><%= reservation.user.name %></b></em>
+                  <p>Submitted: <u><%= reservation.created_at.to_formatted_s(:long_ordinal) %></u></p>
+                <% end %>
+              <% end %>
+            <br>
+            </p>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script src="/plugins/bootstrap-pager.js"></script>
+</div>

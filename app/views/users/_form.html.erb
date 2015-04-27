@@ -1,23 +1,23 @@
-<div class="field">
+<div class="well">
 <%= form_for User.new do |u| %>
 	<div class="field">
-		<%= u.label :name %>
+		<%= u.label :name %><br>
 		<%= u.text_field :name %>
 	</div>
 	<div class="field">
-		<%= u.label :email %>
+		<%= u.label :email %><br>
 		<%= u.text_field :email %>
 	</div>
 	<div class="field">
-		<%= u.label :password %>
+		<%= u.label :password %><br>
 		<%= u.password_field :password %>
 	</div>
 	<div class="field">
-		<%= u.label :password_confirmation %>
+		<%= u.label :password_confirmation %><br>
 		<%= u.password_field :password_confirmation %>
 	</div>
 	<div class="actions">
-		<%= u.submit %>
+		<br><%= u.submit %>
 	</div>
 <% end %>
 </div>

@@ -1,2 +1,35 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<!-- Top Panel Area -->
+<h1 style="text-align:center;">Make a Resy Below</h1>
+<hr />
+
+<!-- Body Panel Area -->
+<%= form_for([@restaurant, @reservation]) do |f| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+      <ul>
+      <% @reservation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" style="text-align:center;">
+  	<%= f.label :name %><br>
+		<%= f.text_field :name, placeholder: "Enter name" %>
+ 	</div>
+ 	<div class="field" style="text-align:center;">
+  	<%= f.label :party_size %><br>
+  	<%= f.text_field :party_size, placeholder: "Enter size of party" %>
+ 	</div><br>
+ 	<div class="field" style="text-align:center;">
+  	<%= f.label :time %>
+  	<%= f.select :booking_time, @restaurant.options_for_select_time %>
+  	<%= f.label :date %>
+  	<%= f.date_select :booking_date %>
+  </div><br>
+  <div class="actions" style="text-align:center;">
+    <%= f.submit %>
+  </div>
+<% end %>
