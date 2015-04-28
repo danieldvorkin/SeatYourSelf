@@ -11,7 +11,7 @@ class ReservationsController < ApplicationController
       @restaurant.save
       redirect_to root_path, alert: "Reservation made!"
     else
-      redirect_to "/restaurants/show"
+      redirect_to root_path, alert: "Reservation attempt failed"
     end
   end
 

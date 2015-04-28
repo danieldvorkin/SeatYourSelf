@@ -5,7 +5,7 @@
 				<div class="col-lg-4 col-sm-6 col-md-6 thumbnail" style="text-align:center;">
 					<h4><%= r.name %></h4>
 					<p>Address: <%= r.address %></p>
-					<p>Capacity: <%= r.capacity %></p>
+					<p>Total Capacity: <%= r.capacity %></p>
 					<p>Hours of Operation: <%= r.open_time %> - <%= r.close_time %></p>
 					<div class="btn btn-default">
 						<%= link_to 'Reserve', "/restaurants/#{r.id}" %>

@@ -17,4 +17,9 @@ class Restaurant < ActiveRecord::Base
 			["#{option} #{ampm}", option]
 		end
 	end
+
+	def availability(booking_date, booking_time)
+		current_fullness = reservations.where(booking_date: booking_date, booking_time: booking_time).map(&:party_size).sum
+		current_fullness = capacity - current_fullness
+	end
 end
