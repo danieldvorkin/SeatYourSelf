@@ -3,3 +3,4 @@ class RemoveHoursFromReservations < ActiveRecord::Migration
     remove_column :reservations, :hours, :integer
   end
 end
+20150427174443
